@@ -9,4 +9,11 @@ wheels/
 # Virtual environments
 .venv
 
+
 .wrangler/
+.venv/
+.wrangler/
+__pycache__/
+*.pyc
+.env
+

@@ -3,23 +3,325 @@
 
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Levenson Lake family reservation and planning dashboard.">
+
     <title>{{ title }}</title>
 
-    <link rel="stylesheet" href="/static/css/site.css">
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/site.css') }}">
 </head>
 
 <body>
 
-    <div class="hero">
+    <header class="site-header">
 
-        <h1>🏡 LevLake</h1>
+        <a class="brand" href="/" aria-label="Levenson Lake home">
+            <span class="brand-mark" aria-hidden="true">
+                <svg viewBox="0 0 64 64">
+                    <path d="M32 5 17 25h10L14 42h14v14h8V42h14L37 25h10L32 5Z"></path>
+                </svg>
+            </span>
 
-        <p>
-            The Levenson Family Lake House
-        </p>
+            <span class="brand-copy">
+                <strong>Levenson Lake</strong>
+                <small>Lake Rabun, Georgia</small>
+            </span>
+        </a>
 
-    </div>
+        <button class="menu-button" type="button" aria-label="Open navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+    </header>
+
+
+    <main>
+
+        <section class="hero">
+
+            <div class="hero-overlay"></div>
+
+            <div class="hero-content">
+                <p class="hero-kicker">The Levenson Family Lake House</p>
+
+                <h1>Make time for the lake.</h1>
+
+                <p class="hero-copy">
+                    Check the calendar, coordinate the family,
+                    and put the next trip on the books.
+                </p>
+            </div>
+
+        </section>
+
+
+        <section class="reserve-callout page-shell">
+
+            <div>
+                <p class="section-eyebrow">Planning a trip?</p>
+                <h2>Thinking about coming to the lake?</h2>
+                <p>
+                    Check the current reservations and claim your dates.
+                </p>
+            </div>
+
+            <a class="primary-button" href="#">
+                Put It on the Calendar
+                <span aria-hidden="true">→</span>
+            </a>
+
+        </section>
+
+
+        <section class="availability-section page-shell">
+
+            <div class="section-heading">
+                <div>
+                    <p class="section-eyebrow">Availability</p>
+                    <h2>Upcoming reservations</h2>
+                </div>
+
+                <a class="text-link" href="#">
+                    View full calendar
+                    <span aria-hidden="true">→</span>
+                </a>
+            </div>
+
+
+            <div class="availability-grid">
+
+                <div class="reservation-list">
+
+                    {% for reservation in reservations %}
+
+                    <article class="reservation-card">
+
+                        <div class="reservation-card-top">
+
+                            <span class="reservation-color {{ reservation.color }}" aria-hidden="true"></span>
+
+                            <h3>{{ reservation.family }}</h3>
+
+                        </div>
+
+
+                        <div class="date-span">
+
+                            <p class="date-primary">
+                                {{ reservation.start_date }}
+                            </p>
+
+                            <div class="date-divider"></div>
+
+                            <p class="date-primary">
+                                {{ reservation.end_date }}
+                            </p>
+
+                        </div>
+
+
+                        <div class="reservation-meta">
+
+                            <span>{{ reservation.status }}</span>
+                            <span>{{ reservation.detail }}</span>
+
+                        </div>
+
+                    </article>
+
+                    {% endfor %}
+
+                </div>
+
+
+                <div class="calendar-panel">
+
+                    <div class="calendar-grid">
+
+                        {% for calendar in calendars %}
+
+                        <section class="mini-calendar">
+
+                            <header class="calendar-header">
+                                <h3>{{ calendar.month }}</h3>
+                                <span>{{ calendar.year }}</span>
+                            </header>
+
+
+                            <div class="weekday-row" aria-hidden="true">
+                                <span>Sun</span>
+                                <span>Mon</span>
+                                <span>Tue</span>
+                                <span>Wed</span>
+                                <span>Thu</span>
+                                <span>Fri</span>
+                                <span>Sat</span>
+                            </div>
+
+
+                            <div class="calendar-days">
+
+                                {% for week in calendar.weeks %}
+                                {% for day in week %}
+
+                                {% if day %}
+
+                                {% set occupancy = calendar.occupied.get(day) %}
+
+                                <span class="calendar-day {% if occupancy %}occupied {{ occupancy }}{% endif %}">
+                                    {{ day }}
+                                </span>
+
+                                {% else %}
+
+                                <span class="calendar-day empty"></span>
+
+                                {% endif %}
+
+                                {% endfor %}
+                                {% endfor %}
+
+                            </div>
+
+                        </section>
+
+                        {% endfor %}
+
+                    </div>
+
+
+                    <div class="calendar-legend">
+
+                        <span>
+                            <i class="legend-dot mom-dad"></i>
+                            Mom & Dad
+                        </span>
+
+                        <span>
+                            <i class="legend-dot smith-family"></i>
+                            Smith Family
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="lake-brief-section">
+
+            <div class="lake-brief page-shell">
+
+                <header class="brief-header">
+
+                    <div>
+                        <p class="brief-eyebrow">
+                            {{ lake_brief.eyebrow }}
+                        </p>
+
+                        <h2>{{ lake_brief.title }}</h2>
+                    </div>
+
+                    <span class="brief-badge">
+                        Updated from current plans
+                    </span>
+
+                </header>
+
+
+                <div class="brief-prose">
+
+                    <p>
+                        {{ lake_brief.summary }}
+                    </p>
+
+
+
+                </div>
+
+
+                <div class="brief-actions">
+
+                    {% for card in lake_brief.cards %}
+
+                    <a class="brief-action" href="{{ card.url }}">
+
+                        <span class="brief-icon brief-icon-{{ card.icon }}" aria-hidden="true">
+                            {% if card.icon == "ice" %}
+                            ❄
+                            {% elif card.icon == "boat" %}
+                            ≋
+                            {% elif card.icon == "meal" %}
+                            ◉
+                            {% endif %}
+                        </span>
+
+                        <span class="brief-action-copy">
+                            <strong>{{ card.title }}</strong>
+                            <small>{{ card.detail }}</small>
+                        </span>
+
+                        <span class="brief-action-link">
+                            {{ card.action }}
+                            <b aria-hidden="true">→</b>
+                        </span>
+
+                    </a>
+
+                    {% endfor %}
+
+                </div>
+
+
+                <footer class="brief-footer">
+                    <a href="#">
+                        View full weekend plan
+                        <span aria-hidden="true">→</span>
+                    </a>
+                </footer>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <nav class="mobile-nav" aria-label="Primary navigation">
+
+        <a class="active" href="/">
+            <span aria-hidden="true">⌂</span>
+            Home
+        </a>
+
+        <a href="#">
+            <span aria-hidden="true">□</span>
+            Calendar
+        </a>
+
+        <a class="mobile-reserve" href="#">
+            <span aria-hidden="true">＋</span>
+            Reserve
+        </a>
+
+        <a href="#">
+            <span aria-hidden="true">≡</span>
+            Lists
+        </a>
+
+        <a href="#">
+            <span aria-hidden="true">•••</span>
+            More
+        </a>
+
+    </nav>
 
 </body>
 
