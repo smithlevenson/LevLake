@@ -1,318 +1,283 @@
-# Levenson Lake Reference
+# Reference
 
-> This document contains the long-term reference information for Levenson Lake.
-> It is not a design document or user guide. It serves as the canonical source
-> for information that changes infrequently and is referenced throughout the
-> application.
+**Status:** Living Document
 
----
+**Last Updated:** 2026-08-01
 
-# Design Principles
+**Audience:** Developers, AI Assistants
 
-## Core Philosophy
-
-- The lake is the destination.
-- The application exists to reduce friction.
-- Users plan with structured data.
-- The application communicates with natural prose.
-- Information should be calm, useful, and understated.
-- Every feature should help the next family.
+**Related Documents:**
+- vision.md
+- architecture.md
+- current-state.md
 
 ---
 
-# Family Groups
+# Application
 
-## Mom & Dad
+Project Name
 
-Description...
+Levenson Lake
 
-Color:
-Email(s):
+Repository
 
----
+LevLake
 
-## Smith's Family
+Primary URL
 
-Description...
+https://levlake.us
 
-Color:
-Email(s):
+Purpose
 
----
-
-## LeAnna's Family
-
-Description...
-
-Color:
-Email(s):
+Private family lake house coordination platform.
 
 ---
 
-## KJ
+# Users
 
-Description...
+Current Users
 
-Color:
-Email(s):
+- Dale
+- Kent
+- Smith's Family
+- LeAnna's Family
+- KJ
+
+Future users should be added only when they have a legitimate need for access.
+
+---
+
+# Family
+
+## Grandparents
+
+Kent Levenson - Nicknames: Pop-Pop, Dad
+
+Dale Levenson - Nicknames: Mimi, Mom
+
+They do not travel together.
+
+---
+
+## LeAnna Wollenberg's Family
+
+Adults
+
+- LeAnna - Nicknames: Anna, Nans
+- Andrew - Nicknames: Uncle, Sonny Boy
+
+Children
+
+- Willow - Nicknames: Wallaby, Moonbeam
+
+---
+
+## Smith Levenson's Family
+
+Adults
+
+- Smith - Nicknames: Smitty, Smittio
+- Brooke - Nicknames: Charlie
+
+Children
+
+- Juliana - Nicknames: J, Jay
+- Christian - Nicknames: Chrishy
+- Cameron - Nicknames: Cam, Cammy
+
+---
+
+## Kent Levenson Jr.
+
+Kent Jr. - Nicknames: KJ
+Youngest child.
+
+---
+
+# Bedrooms
+
+Master
+
+- 1 King
+- Private Bathroom
+
+Master Kids
+
+- 3 Twin Beds
+- Shares Master Bathroom
+
+Downstairs King
+
+- 1 King
+
+Downstairs Queen
+
+- 1 Queen
+
+Downstairs Bunks
+
+- 2 Twin Beds
+- Couch
+- Shares Queen Bathroom
+
+Bedroom assignments should support reservations but not unnecessarily complicate the booking process.
+
+---
+
+# Reservation Philosophy
+
+Reservations are first-come, first-served.
+
+Reservations longer than 48 hours require approval.
+
+Reservations shorter than 48 hours are automatically approved.
+
+Reservation requests notify the family.
+
+Automatic approval occurs after 48 hours if nobody objects.
 
 ---
 
 # House
 
-## Bedrooms
+Location
 
-### Master Suite
+Lake Rabun
 
-- 1 King
-- Private Bathroom
+Lakemont, Georgia
 
-Notes
+Marina
 
----
-
-### Master Kids Room
-
-- 3 Twins
-- Shared Bathroom
-
-Rules
-
-- Normally reserved with Master Suite.
-- Can be separated only in special circumstances.
+Hall's Boat House
 
 ---
 
-### Downstairs Queen
+# Design Palette
 
-...
+Rabun Black
+
+#061410
+
+Rabun Green
+
+#0d241d
+
+Water
+
+#17352d
+
+Mahogany
+
+#5b241b
+
+Brass
+
+#b6924c
+
+Cream
+
+#efe7d8
+
+These colors should be treated as the design system.
 
 ---
 
-### Downstairs Bunks
+# Visual Style
 
-...
+Overall appearance
 
----
+- Quiet
+- Elegant
+- Understated
+- Functional
 
-### Downstairs King
+Avoid
 
-...
-
----
-
-## Bathrooms
-
-(To be added)
-
----
-
-## Parking
-
-(To be added)
+- Bright colors
+- Heavy gradients
+- Excessive shadows
+- Dashboard styling
 
 ---
 
-## Utilities
+# Landing Page
 
-(To be added)
+Contains
+
+- Hero
+- Upcoming Reservations
+- Calendar
+- Lake Brief
+
+Lake Brief is the primary communication mechanism.
+
+Supporting cards provide detail.
+
+---
+
+# Current Sections
+
+House
+
+Boat
+
+Planning
+
+Weather
+
+Shopping
+
+Reservations
 
 ---
 
 # Boat
 
-## General
+Boat information should eventually include
 
-Boat Name:
-
-Year:
-
-Engine:
-
-Capacity:
+- Fuel
+- Winterized
+- Readiness
+- Weather window
 
 ---
 
-## Seasonal Tasks
+# House Information
 
-Spring
+Future information
 
-Summer
-
-Fall
-
-Winter
-
----
-
-## Equipment
-
-Life Jackets
-
-Tow Ropes
-
-Tube
-
-Wakeboards
-
-Fishing Gear
+- Cleaning
+- WiFi
+- Shopping
+- Meals
+- Checklists
 
 ---
 
-# House Systems
+# Notifications
 
-## Internet
+Future support
 
-Provider
+- Email
 
-Starlink
+Future consideration
 
----
-
-## Network
-
-3 × Orbi
-
-Clone Mini PC
+- SMS
 
 ---
 
-## Television
+# Development Notes
 
-3 TVs
+This document intentionally contains facts only.
 
----
+Design decisions belong in:
 
-## Cameras
+- decisions.md
 
-(TBD)
+Architecture belongs in:
 
----
+- architecture.md
 
-## Smart Devices
+User experience belongs in:
 
-(TBD)
-
----
-
-# Shopping
-
-## Reeve's Ace
-
-Common Purchases
-
----
-
-## Ingles
-
-Common Purchases
-
----
-
-## Walmart
-
-Common Purchases
-
----
-
-## Costco
-
-Common Purchases
-
----
-
-## Home Depot
-
-Common Purchases
-
----
-
-# Local Favorites
-
-Restaurants
-
-Activities
-
-Marinas
-
-Boat Ramp
-
-Hiking
-
----
-
-# House Policies
-
-Reservations
-
-Guests
-
-Pets
-
-Cleaning
-
-Quiet Hours
-
----
-
-# Planning Defaults
-
-Typical Weekend Meals
-
-Typical Shopping
-
-Packing Suggestions
-
-Boat Checklist
-
-Heading Home Checklist
-
----
-
-# Future Integrations
-
-Weather
-
-Lake Temperature
-
-Lake Level
-
-Hall's Boat House
-
-Soque River
-
-Calendar
-
-Email
-
-SMS
-
----
-
-# Notes
-
-General observations that don't fit elsewhere.
-
-
-# Vocabulary
-
-The application intentionally avoids hotel and booking terminology.
-
-Preferred language:
-
-Reservation → Weekend
-
-Reserve → Put It On The Calendar
-
-Reservation Confirmed → Your weekend is on the calendar.
-
-Check Out → Heading Home
-
-Maintenance → House Notes
-
-Shopping List → Before You Go / Shopping
-
-Dashboard → Home
-
-User → Family
-
+- design-principles.md

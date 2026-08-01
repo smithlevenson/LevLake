@@ -1,65 +1,197 @@
-Version 0.1
+# Roadmap
 
-✓ Cloudflare
-✓ Access
-✓ App Shell
+**Status:** Living Document
 
-----------------
+**Last Updated:** 2026-08-01
 
-Version 0.2
+**Audience:** Developers, AI Assistants
 
-Calendar
+**Related Documents:**
+- current-state.md
+- vision.md
+- session-log.md
 
-Weekend Page
+---
 
-Navigation
+# Purpose
 
-Hero Image
+This document describes the planned evolution of LevLake.
 
-----------------
+It is not intended to be a detailed task list.
 
-Version 0.3
+Features should move from this document into `current-state.md` when active development begins.
 
-D1 Database
+---
 
-Reservations
+# Guiding Principles
 
-Families
+Priority is determined by user value.
 
-Rooms
+Features should:
 
-----------------
+- reduce family communication
+- improve planning
+- eliminate uncertainty
+- simplify existing workflows
 
-Version 0.4
+New features should solve observed problems rather than hypothetical ones.
 
-Approval Workflow
+---
 
-Email
+# Phase 1 - Foundation (Current)
 
-Reminder
+Status
 
-Auto Approval
+In Progress
 
-----------------
+Objectives
 
-Version 0.5
+- Stable application structure
+- Landing page
+- Responsive layout
+- Reservation workflow
+- Calendar
+- Lake Brief
+- Documentation
 
-House
+Success Criteria
 
-Boat
+A family member can determine:
 
-Shopping
+- Who is coming
+- When they are coming
+- Whether space is available
+- What requires attention
 
-Meals
+---
 
-----------------
+# Phase 2 - Reservations
 
-Version 1.0
+Status
 
-AI Summaries
+Planned
 
-Journal
+Objectives
 
-Seasonal Advisor
+- Reservation requests
+- Reservation approval
+- Availability calculation
+- Bedroom assignment
+- Conflict detection
+- Reservation history
 
-PWA
+---
+
+# Phase 3 - House Operations
+
+Status
+
+Planned
+
+Objectives
+
+- Cleaning coordination
+- Shopping
+- Meals
+- House status
+- Arrival checklist
+- Departure checklist
+
+---
+
+# Phase 4 - Boat
+
+Status
+
+Planned
+
+Objectives
+
+- Boat readiness
+- Fuel
+- Weather
+- Water temperature
+- Best boating window
+- Winterization
+
+---
+
+# Phase 5 - Communication
+
+Status
+
+Future
+
+Objectives
+
+- Email notifications
+- Optional SMS
+- Reminder engine
+- Family announcements
+
+Communication should summarize rather than notify excessively.
+
+---
+
+# Phase 6 - Intelligence
+
+Status
+
+Future
+
+Objectives
+
+- AI generated Lake Brief
+- Weekend planning
+- Meal recommendations
+- Shopping recommendations
+- Weather summaries
+- Historical trends
+
+AI should assist decision making rather than automate decisions.
+
+---
+
+# Phase 7 - Administration
+
+Status
+
+Future
+
+Objectives
+
+- User management
+- Permissions
+- Configuration
+- Audit history
+
+Administrative features should remain minimal.
+
+---
+
+# Out of Scope
+
+LevLake is not intended to become:
+
+- Airbnb
+- Property management software
+- Smart home controller
+- Financial management software
+- General family social network
+
+---
+
+# Future Ideas
+
+Ideas are intentionally listed separately from planned work.
+
+Possible future additions
+
+- Boat maintenance history
+- Lake event calendar
+- Shared packing lists
+- Fishing reports
+- Photo memories
+- Guest mode
+
+Ideas should not be interpreted as commitments.
