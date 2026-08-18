@@ -2,14 +2,13 @@
 
 **Status:** Living Document
 
-**Last Updated:** 2026-08-01
+**Last Updated:** 2026-08-17
 
 **Audience:** Developers, AI Assistants
 
 **Related Documents:**
-- current-state.md
-- vision.md
-- session-log.md
+- Architecture.md
+- Decisions.md
 
 ---
 
@@ -152,7 +151,31 @@ AI should assist decision making rather than automate decisions.
 
 ---
 
-# Phase 7 - Administration
+# Phase 7 - Lake Edge Integration
+
+Status
+
+Future
+
+Objectives
+
+- Establish `LEVLAKE-EDGE` as a persistent lake infrastructure node
+- Tailscale remote administration
+- authenticated cloud-to-local communication
+- MQTT connectivity
+- local house-state collection
+- camera status/events/snapshots
+- power and network health telemetry
+- offline state buffering and reconnection handling
+- expose useful summarized state to LevLake
+
+The Edge integration should allow LevLake to know useful things about the physical lake house without turning the LevLake application itself into the smart-home controller.
+
+Low-level device orchestration should move into a separate lake automation codebase when that work becomes substantial.
+
+---
+
+# Phase 8 - Administration
 
 Status
 
@@ -179,6 +202,8 @@ LevLake is not intended to become:
 - Financial management software
 - General family social network
 
+LevLake may display live house state and send high-level requests to the lake automation layer without owning the underlying device orchestration.
+
 ---
 
 # Future Ideas
@@ -193,5 +218,6 @@ Possible future additions
 - Fishing reports
 - Photo memories
 - Guest mode
+- Lightweight Lake Arcade on `LEVLAKE-EDGE`
 
 Ideas should not be interpreted as commitments.
