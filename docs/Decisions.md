@@ -2,14 +2,13 @@
 
 **Status:** Living Document
 
-**Last Updated:** 2026-08-01
+**Last Updated:** 2026-08-17
 
 **Audience:** Developers, AI Assistants
 
 **Related Documents:**
-- architecture.md
-- current-state.md
-- design-principles.md
+- Architecture.md
+- Roadmap.md
 
 ---
 
@@ -219,3 +218,156 @@ Rely on chat history.
 ### Impact
 
 Architectural decisions should be documented before they are forgotten.
+
+---
+
+# 2026-08-17
+
+## Dedicated Lake Edge Computer
+
+### Decision
+
+Use the Dynabook Portégé X40-K as the dedicated always-on lake computer named `LEVLAKE-EDGE`.
+
+The machine has an Intel Core i7-1260P, 12 cores / 16 logical processors, 16 GB RAM, Windows 11 Pro, integrated Intel graphics, and an internal laptop battery.
+
+### Reason
+
+The initial edge workload is light, but the lake needs a reliable local bridge for future MQTT, webhooks, camera integration, local APIs, house-state collection, and remote access.
+
+The Dynabook provides substantial unused compute headroom for future workloads while remaining power-efficient enough for always-on operation.
+
+Its laptop battery is also useful because utility power at the lake fails frequently.
+
+### Alternatives Considered
+
+- HP Core 3 100U / 12 GB laptop
+- Core i3-1005G1 / 8 GB laptop
+- Dedicated mini PC
+- No local compute node
+
+The smaller laptops are sufficient for the current edge workload, but they leave much less headroom for virtualization and future local compute.
+
+### Impact
+
+`LEVLAKE-EDGE` becomes part of the lake infrastructure architecture and should be treated as a persistent node rather than a personal workstation.
+
+It should remain lightly loaded during normal operation and reserve compute capacity for future services.
+
+---
+
+# 2026-08-17
+
+## Edge Power and Network Placement
+
+### Decision
+
+Keep `LEVLAKE-EDGE` in the Lake Office on wired Ethernet rather than moving it to a generator-powered location.
+
+Use the laptop battery plus a small UPS as ride-through power.
+
+### Reason
+
+The Lake Office is hardwired by CAT5 to the lake networking equipment. The networking equipment and Starlink connection are generator-backed even though the office outlet is not.
+
+The laptop therefore remains connected to a powered network during many utility outages while its UPS and internal battery keep the computer operating.
+
+### Alternatives Considered
+
+- Move the laptop to a generator-backed room
+- Rewire the Lake Office immediately
+- Rely only on the laptop battery
+
+### Impact
+
+The laptop can potentially report utility-power loss while retaining network and Internet access.
+
+Power-state telemetry should eventually be incorporated into Edge monitoring, but laptop AC/battery state alone should not be treated as an authoritative whole-house power sensor.
+
+---
+
+# 2026-08-17
+
+## Starlink Connectivity Strategy
+
+### Decision
+
+Design lake remote access and cloud-to-local communication around outbound connections, authenticated HTTPS/webhooks, MQTT, and Tailscale rather than public inbound ports.
+
+### Reason
+
+Starlink connectivity is well suited to outbound application traffic and overlay networking but should not be treated as a traditional public-IP connection for inbound service exposure.
+
+The lake architecture should remain secure and tolerant of changing Internet conditions.
+
+### Alternatives Considered
+
+- Public port forwarding
+- Directly exposing local APIs
+- Cloud-only architecture with no local Edge node
+
+### Impact
+
+Local automation should continue functioning during Internet outages where possible, buffer relevant state, and reconcile with cloud services after connectivity returns.
+
+---
+
+# 2026-08-17
+
+## Future Lake Arcade on Edge Hardware
+
+### Decision
+
+Preserve enough compute headroom on `LEVLAKE-EDGE` to support a future lightweight Lake Arcade workload.
+
+The Lake Arcade should be curated rather than copied wholesale from the primary home ArcadeVM.
+
+### Reason
+
+The i7-1260P and 16 GB RAM provide enough CPU capacity for an occasional arcade workload while edge services remain lightweight.
+
+A lake-specific library does not need modern high-end emulation. Classic systems through at least Nintendo 64 are considered appropriate targets.
+
+### Alternatives Considered
+
+- Dedicated arcade computer at the lake
+- Use one of the lower-spec laptops as Edge and retain the Dynabook elsewhere
+- Duplicate the full primary ArcadeVM
+
+### Impact
+
+The eventual implementation may use a lightweight VM if graphics acceleration is adequate, or run natively on Windows if integrated-GPU virtualization is unnecessarily limiting.
+
+The arcade workload should normally be stopped when not in use.
+
+---
+
+# 2026-08-17
+
+## Separate Website and Automation Responsibilities
+
+### Decision
+
+Keep LevLake as the family-facing website/application and plan for a separate lake automation codebase when low-level device orchestration becomes substantial.
+
+LevLake may display live house state and issue high-level requests, but it should not absorb device-specific automation logic.
+
+### Reason
+
+The existing LevLake roadmap explicitly says the application is not intended to become a smart-home controller.
+
+The website and the physical-house integration layer have different lifecycles, failure modes, security concerns, and responsibilities.
+
+Separating them keeps both systems easier to understand and maintain.
+
+### Alternatives Considered
+
+- Put all Edge and automation code directly in the LevLake repository
+- Build all automation functionality as internal LevLake services
+- Keep the systems completely disconnected
+
+### Impact
+
+A future `LakeAutomation` or similarly named repository should own MQTT, cameras, device APIs, local automation, power/network monitoring, and Edge runtime services.
+
+LevLake and the automation system should integrate through explicit contracts such as authenticated APIs, webhooks, and MQTT.
