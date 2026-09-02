@@ -145,8 +145,12 @@ The pages contain public app information only. Google tokens and household
 calendar events stay out of this site. The local LevAssistant appliance is not
 exposed through this Worker.
 
-These additions are prepared in source; deployment and public URL verification
-are pending. Do not enter URLs in OAuth branding until all three load publicly.
+Wrangler deployment succeeded on 2026-09-02, reported by the operator:
+version `c041a94b-934f-4bae-9302-1837dfb80361`, Worker `levlake`, with
+`levlake.us` and `levlake.levlake.workers.dev` triggers. Public page acceptance
+is still pending: the assistant's web fetch could not open these URLs, which
+does not establish a site failure. Verify all three in a browser before entering
+the URLs in OAuth branding.
 
 From the existing Windows LevLake checkout, review `git status --short --branch`
 and pull `main` with `git pull --ff-only`. Preserve local work if the pull cannot
