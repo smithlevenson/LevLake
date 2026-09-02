@@ -18,7 +18,7 @@
 <p class="meta">Last updated: September 2, 2026</p>
 <p>This policy covers LevAssistant, a personal scheduling application, and these public information pages.</p>
 <h2>Data we access</h2>
-<p>With the account owner’s permission, LevAssistant reads Google Calendar events and calendar-list information. It uses calendar metadata to confirm the connected account and reads events from that account’s primary calendar for the current day.</p>
+<p>With the account owner’s permission, LevAssistant reads Google Calendar events and calendar-list information. It uses calendar metadata to confirm the connected account and reads the current day’s events from the primary calendar and the shared or subscribed calendars selected in Google Calendar. Hidden and unchecked subscriptions are excluded. Calendar names and colors identify the source of each event.</p>
 <p>Event responses can include titles, dates, times, descriptions, locations, identifiers, recurrence information, and other event metadata supplied by Google. LevAssistant displays the event’s title, time, location, and description. It does not request access to Gmail messages, contacts, or Google Drive files.</p>
 <h2>How we use the data</h2>
 <p>Calendar data is used to provide the household’s daily schedule. Access is read-only. LevAssistant does not create, edit, delete, or send invitations for calendar events.</p>
@@ -26,7 +26,7 @@
 <p>LevAssistant’s use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including its Limited Use requirements.</p>
 <h2>Storage and access</h2>
 <p>Google authorization tokens are stored in a file on the home appliance with access restricted to its operating-system account. Google credentials are not included in the source repository or the public website. The app does not receive the Google account password.</p>
-<p>The app keeps a working copy of today’s displayed events in memory. It replaces that copy as the schedule refreshes and clears it when the app restarts. A temporary connection failure may leave the most recently loaded schedule visible with a stale-data notice.</p>
+<p>The app keeps a working copy of today’s displayed events in memory. It replaces that copy as the schedule refreshes and clears it when the app restarts. If a subscription fails to load, the app shows the available calendars with an incomplete-schedule notice. If the entire update fails, the most recently loaded schedule may remain visible with a stale-data notice.</p>
 <p>Anyone able to use the household touchscreen or reach its web interface on the home network can view the displayed schedule. The appliance currently serves that interface over local HTTP. Its Google API connections use HTTPS.</p>
 <h2>Sharing and public website hosting</h2>
 <p>The appliance communicates directly with Google to retrieve calendar data. Calendar data is shown to household users and is not transferred to Cloudflare to host these pages.</p>
