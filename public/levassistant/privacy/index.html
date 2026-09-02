@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="How LevAssistant accesses, uses, stores, and deletes Google Calendar data.">
+<title>Privacy policy | LevAssistant</title>
+<link rel="canonical" href="https://levlake.us/levassistant/privacy/">
+<link rel="stylesheet" href="/levassistant/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header><a class="brand" href="/levassistant/">LevAssistant</a><nav aria-label="LevAssistant information"><a href="/levassistant/">About</a>
+<a href="/levassistant/privacy/" aria-current="page">Privacy policy</a>
+<a href="/levassistant/terms/">Terms of service</a></nav></header>
+<main id="main">
+<h1>Privacy policy</h1>
+<p class="meta">Last updated: September 2, 2026</p>
+<p>This policy covers LevAssistant, a personal household application maintained by Smith Levenson, and these public information pages.</p>
+<h2>Data we access</h2>
+<p>With the account owner’s permission, LevAssistant reads Google Calendar events and calendar-list information. It uses calendar metadata to confirm the connected account and reads events from that account’s primary calendar for the current day.</p>
+<p>Event responses can include titles, dates, times, descriptions, locations, identifiers, recurrence information, and other event metadata supplied by Google. LevAssistant displays the event’s title, time, location, and description. It does not request access to Gmail messages, contacts, or Google Drive files.</p>
+<h2>How we use the data</h2>
+<p>Calendar data is used to provide the household’s daily schedule. Access is read-only. LevAssistant does not create, edit, delete, or send invitations for calendar events.</p>
+<p>Google Calendar data is not sold, used for advertising, sent to AI services, or used to train AI models. It is not published on these information pages.</p>
+<p>LevAssistant’s use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including its Limited Use requirements.</p>
+<h2>Storage and access</h2>
+<p>Google authorization tokens are stored in a file on the home appliance with access restricted to its operating-system account. Google credentials are not included in the source repository or the public website. The app does not receive the Google account password.</p>
+<p>The app keeps a working copy of today’s displayed events in memory. It replaces that copy as the schedule refreshes and clears it when the app restarts. A temporary connection failure may leave the most recently loaded schedule visible with a stale-data notice.</p>
+<p>Anyone able to use the household touchscreen or reach its web interface on the home network can view the displayed schedule. The appliance currently serves that interface over local HTTP. Its Google API connections use HTTPS.</p>
+<h2>Sharing and public website hosting</h2>
+<p>The appliance communicates directly with Google to retrieve calendar data. Calendar data is shown to household users and is not transferred to Cloudflare to host these pages.</p>
+<p>Cloudflare hosts the public information site and may process visitors’ IP addresses and request information to deliver and protect it. These pages contain no added analytics scripts, advertising, forms, or application cookies. See <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare’s privacy policy</a> for its processing practices.</p>
+<h2>Disconnecting and deletion</h2>
+<p>The account owner can revoke LevAssistant’s access through <a href="https://myaccount.google.com/connections">Google Account connections</a>. To remove the appliance’s authorization, its administrator can stop LevAssistant, delete its saved Google token file, and restart it. Restarting clears cached events; deleting the token prevents further calendar reads until the account is connected again.</p>
+<p>These steps do not delete the source events in Google Calendar. Any administrator-created backups must be handled separately. For help disconnecting or removing local data, contact <a href="mailto:battleviewfam@gmail.com">battleviewfam@gmail.com</a>.</p>
+<h2>Household use and changes</h2>
+<p>The connection is managed by a household adult. The app is not offered for public registration and does not create separate Google accounts for children. This policy will be updated when data practices change, before enabling new uses of Google data.</p>
+</main>
+<footer>LevAssistant · A Levenson household project</footer>
+</body>
+</html>
